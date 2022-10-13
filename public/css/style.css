@@ -1,0 +1,406 @@
+html{
+  min-height: 100%;
+}
+body{
+  min-height: 100%;
+}
+body,p {
+    font-family: Verdana;
+}
+h1,h2,h3,h4, button {
+  font-family: cursive;
+}
+main {
+  margin-top: 120px;
+  min-height: 750px;
+}
+.imgList img {
+  width: 200px;
+}
+
+img {
+  width: 300px;
+}
+
+.positif ,.negatif {
+  background-color: #9cbfa7;
+  border-radius: 10% 20%;
+  color: aliceblue;
+  margin-bottom: 2%;
+  padding-top: 2%;
+}
+
+#positifList, #negatifList {
+  padding-left: 10%;
+}
+#logo {
+  width: 40px;
+  margin: 1rem;
+  margin-top: 1.5rem;
+}
+.negatif {
+  background-color: #4f345a;
+  border-radius: 20% 10%;
+
+}
+.negatif .row, .positif .row {
+  flex-wrap: nowrap;
+  padding-right: 0;
+}
+.listNumber p{
+  padding-bottom: 2%;
+}
+.notes {
+  justify-content: space-between;
+}
+.negatif h4, .positif h4 {
+  padding-top: 0.5rem;
+}
+svg {
+  fill: aliceblue;
+  width: 30px;
+  height: 30px;
+}
+.divImg {
+  margin-right: 1.8rem;
+
+}
+.commentaires {
+  margin-top: .6rem;
+  border-bottom: .1rem solid rgba(118, 119, 118, 0.258);
+  padding: .7rem;
+}
+.profilImg {
+  width: 110px;
+  padding: 1px;
+  background-color: #4f345a;
+  border-radius: 8%;
+}
+.imgComs {
+  width: 110px;
+  border-radius: 8%;
+  margin-right: .8rem;
+}
+.signal {
+  margin-left: .4rem;
+  background-color: rgba(111, 113, 111, 0.323);
+  border: solid rgba(41, 40, 40, 0.556) 1px;
+  color:rgba(41, 40, 40, 0.556) ;
+  border-radius: 3px;
+}
+.signalBtn {
+  margin-left: .4rem;
+  background-color: rgba(218, 47, 20, 0.181);
+  border: solid rgba(245, 7, 7, 0.815) 1px;
+  color:rgba(245, 7, 7, 0.815) ;
+  padding: .2rem;
+  border-radius: 3px;
+}
+.signalBtn:hover {
+  background-color: rgba(245, 7, 7, 0.815);
+  border: solid rgba(245, 7, 7, 0.815) 1px;
+  color: rgba(249, 248, 248, 0.964);
+}
+.note {
+  margin-left: .8rem;
+}
+.fa-heart{
+  color:#5d4e6d ;
+}
+.warning {
+  color: red;
+  font-weight: bold;
+}
+.addComArea {
+  padding: 1rem;
+  padding-left: 5%;
+  width: 100%;
+  background-color: rgba(118, 119, 118, 0.258);
+}
+.addComArea button {
+  background-color: #4f345a;
+}
+textarea {
+  max-width: 800px;
+  width: 95%;
+}
+#homeImg {
+  margin-top: 5%;
+  width: 200px;
+}
+.container {
+  margin-top: 2%;
+  font-family: cursive;
+}
+.containerGlobal {
+  min-height: 600px;
+}
+.navbar {
+  background-color: rgb(249, 251, 250);
+  border-bottom: .1rem solid rgba(118, 119, 118, 0.258);
+ 
+}
+header {
+  position: fixed;
+  z-index: 1001;
+  height: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+#navbarToggler {
+  flex-direction: row-reverse;
+  font-weight: bolder;
+}
+#navbarToggler button{
+ color: #4f345a;
+ background-color: #4f345a;
+}
+#navbarToggler .nav-link,#navbarToggler .dropdown-item {
+  color: #9cbfa7;
+  font-weight: bold;
+}
+.navbar-nav li :active {
+  background-color:#f8f9fa;
+}
+#navbarNnavbarTogglerav a ,nav a{
+  color: #4f345a;
+}
+#navbarToggler .nav-item :hover {
+  color: #4f345a;
+  font-weight: bolder;
+}
+.footer a {
+  color: whitesmoke;
+}
+#footerList .nav-item :hover {
+  color: rgb(7, 154, 88);
+}
+.navbar-brand {
+  font-weight: bolder;
+}
+.navbar-brand:hover {
+  color: rgb(7, 154, 88);
+}
+.list {
+  left: 10%;
+}
+
+#gamePage {
+  border: .1rem solid;
+  border-color: rgba(56, 57, 57, 0.149);
+  border-radius: 5%;
+  margin-bottom: 1.3rem;
+}
+#map {/*carte page A propos*/
+  height: 400px;
+  margin-bottom:1% ;
+  margin-left: 10%;
+  width: 80%;
+}
+#loginPage,#registerPage ,#accountPage {
+  min-height: 400px;
+  padding-top: 5%;
+  padding-left: 12%;
+  padding-right: 12%;
+}
+
+#account {
+  margin-top: 5%;
+  margin-bottom: 5%;
+  padding-top: .3rem;
+  padding-bottom: .3rem;
+  margin-bottom: 1.3rem;
+  background-color:rgba(186, 189, 186, 0.086);
+  border: 1px solid rgba(118, 119, 118, 0.258);
+  border-radius: .3rem;
+}
+#account input, #account h3 {
+ margin-left: 1.5rem;
+ width: 80%;
+}
+#account h3 {
+  margin-top: .5rem;
+}
+#account img {
+  width: 70%;
+  margin-left: 1.5rem;
+}
+#updateBtn {
+  margin: 20px;
+  margin-top: 18%;
+  font-size: larger;
+}
+.aproposDesc {
+  color: #9cbfa7;
+  font-weight: bold;
+
+}
+div .divDesc {
+  margin-left: 10%;
+  width: 80%;
+}
+#envoyer {
+  background-color: #c9f299;
+  border-color: #9cbfa7;
+  color: #4f345a;
+  font-weight: bolder;
+}
+#searchCity {
+  
+  margin-left: 10%;
+  margin-bottom: 1%;
+}
+#paginationActive {
+  background-color: #9cbfa7;
+  color: aliceblue;
+  padding-right: .3rem;
+  padding-left: .3rem;
+}
+.container.paginationHome {
+  border: solid grey 1px;
+  font-size: 1.3rem;
+  background-color: #ffffff;
+  width: 25%;
+
+}
+.paginationHome .paginationItem{
+  color: #4f345a;
+  padding-left: .4rem;
+  padding-right: .4rem;
+}
+.paginationItem:hover {
+  color: #c9f299;
+  border: solid #4f345a 1px;
+  background-color: #4f345a;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  text-transform: none;
+  font-weight: bolder;
+}
+h1,h2,h3,.loginComs {
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+h2,h1,.loginComs {
+  color: #5d4e6d;
+}
+h3 {
+  color: #9cbfa7;
+}
+.listGames {
+  padding-top: .7rem;
+  padding-bottom: .7rem;
+  background-color:rgba(186, 189, 186, 0.086);
+}
+a.form-control {
+  color: #5d4e6d;
+  background-color: #c9f299;
+  font-weight: bold;
+  margin-left: 25%;
+  width: 50%;
+
+}
+a.form-control:hover {
+  background-color: #4f345a;
+  color: #c9f299;
+
+}
+a:hover {
+  text-decoration: none !important;
+  color: #4f345a;
+  text-decoration:dotted;
+
+
+}
+a.btnGlobal, button.btnGlobal {
+  background-color: #9cbfa7;
+  border-color: #9cbfa7;
+}
+a.btnGlobal:hover,button.btnGlobal:hover {
+  background-color: #9cbfa7;
+  border-color: #9cbfa7;
+}
+.list p {
+  padding-left: 15%;
+  padding-right: 15%;
+}
+.navbar-toggler button{
+  background-color: #4f345a;
+  z-index: 10000;
+}
+#jumbotron {
+  width: 100%;
+  margin-bottom: 0 !important;
+  background-color: #5d4e6d !important;
+  color: aliceblue;
+border-radius: 0;
+}
+@media screen and (min-width: 1200px){
+  main {
+    min-height: 1000px;
+  }
+  #loginPage {
+    padding-left: 2%;
+    padding-right: 2%;
+  }
+  #account .row, #accountPage{
+    padding: .3rem;
+  }
+  
+}
+@media screen and (max-width: 900px) {
+  .positif , .negatif {
+    flex: 100% !important;
+    max-width: 100% !important;
+  }
+}
+@media screen and (max-width: 800px){
+  #carousel1 {
+    display: none;
+  }
+  #gamePage, #accountPage  form{
+    display: block;
+  }
+  .categoryList {
+    flex-direction: column;
+    align-items: center;
+    padding-left: 1px;
+    padding-right: 1px;
+  }
+  #gamePage , #notes {
+    margin-left: 0.1rem;
+    margin-right: 0.1rem;
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+   #itemGame {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+ .col-md-6 {
+  max-width: 100% !important;
+  width: 100% !important;
+ }
+  .notes {
+    display: flex;
+  }
+ .resumeContent img {
+   width: 200px;
+  }
+}
+@media screen and (max-width: 600px){
+  svg {
+    display: none;
+  }
+ .negatif h4, .positif h4 {
+  text-align: center;
+  }
+}
+@media screen and (max-width: 500px){
+  .container .paginationHome{
+    width: 80%;
+  }
+}
