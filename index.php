@@ -1,4 +1,6 @@
 <?php
+require('vendor/autoload.php');
+//dd("coucou");
 if (session_status() == PHP_SESSION_NONE) {
   session_start();
   if (!isset($_SESSION['lvl'])) {
@@ -37,7 +39,6 @@ use function App\controller\{
 };
 
 require('App/controller/frontend.php');
-require('vendor/autoload.php');
 
 if (isset($_GET['action'])) :
   if ($_GET['action'] == 'home') :
@@ -79,7 +80,7 @@ if (isset($_GET['action'])) :
     $id = strip_tags($_SESSION['id']);
     $pseudo = strip_tags($_POST['pseudo']);
     $imgToTest = $_FILES['image'];
- 	$imgType = $imgToTest['type'];
+    $imgType = $imgToTest['type'];
     $image = '/public/images/users/' . $imgToTest['name'];
     $dossier = "/kunden/homepages/32/d779462273/htdocs/P5/public/images/users/";
 
@@ -127,14 +128,14 @@ if (isset($_GET['action'])) :
       $negatif = strip_tags($_POST['negatif']);
       $negatif = htmlentities($_POST['negatif']);
       $negatif = stripslashes(nl2br($_POST['negatif']));
-	  $imgType = $arrayImage['type'];
+      $imgType = $arrayImage['type'];
       $image = '/public/images/' . $arrayImage['name'];
       $dossier = "/kunden/homepages/32/d779462273/htdocs/P5/public/images/";
       if ($imgType === "image/jpg" or $imgType === "image/JPG" or $imgType === "image/png" or $imgType === "image/PNG" or $imgType === "image/jpeg" or $imgType === "image/JPEG") :
         addGame($title, $categorie, $image, $synopsis, $content, $positif, $negatif);
         move_uploaded_file($arrayImage['tmp_name'], $dossier . $arrayImage['name']);
         admin();
-      else:
+      else :
         $_SESSION['erreur'] = "Veuillez selectionner une image valide";
       endif;
     endif;
@@ -187,7 +188,7 @@ if (isset($_GET['action'])) :
     extract($_GET);
     $id = strip_tags($_GET['id']);
     $game = gameToSuppr($id);
-  elseif($_GET['action'] == 'delete') :
+  elseif ($_GET['action'] == 'delete') :
     extract($_GET);
     $id = strip_tags($_GET['id']);
     if (isset($_GET['id']) && !empty($_GET['id'])) :

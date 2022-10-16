@@ -1,4 +1,5 @@
 <?php
+
 use function App\controller\homeGames; ?>
 <?php $title = "La K-verne du Jeu"; ?>
 
@@ -36,7 +37,7 @@ if (isset($_SESSION['user'])) { ?>
     <div id="carousel1">
         <div class="item row col-12">
             <div class="item_img col-7">
-                <img src="/public/images/JDS.webp" alt="image d'une table de jeux de societe">
+                <img src=".\public/images/JDS.webp" alt="image d'une table de jeux de societe">
             </div>
             <div class="item_body col-5">
                 <div class="item_title">
@@ -49,7 +50,7 @@ if (isset($_SESSION['user'])) { ?>
         </div>
         <div class="item row col-12">
             <div class="item_img col-7">
-                <img src="/public/images/tapisAbyss.jpg" alt="tapis du jeu Abyss">
+                <img src=".\public/images/tapisAbyss.jpg" alt="tapis du jeu Abyss">
             </div>
             <div class="item_body col-5">
                 <div class="item_title">
@@ -62,7 +63,7 @@ if (isset($_SESSION['user'])) { ?>
         </div>
         <div class="item row col-12">
             <div class="item_img col-7">
-                <img src="/public/images/whenIDream.webp" alt="materiel du jeu When I Dream">
+                <img src=".\public/images/whenIDream.webp" alt="materiel du jeu When I Dream">
             </div>
             <div class="item_body col-5">
                 <div class="item_title">
