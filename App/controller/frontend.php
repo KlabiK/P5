@@ -7,11 +7,11 @@ use App\model\UserManager;
 use App\model\CommentManager;
 
 
-function home() //Page d'accueil
+function home() //Page d'accueil*
 {
     require('view/frontend/homeView.php');
 }
-function homeGames() // retourne tous les jeux , 5 par page
+function homeGames() // retourne tous les jeux , 5 par page*
 {
     $categorie = null;
     $postManager = new PostManager();
@@ -22,25 +22,34 @@ function homeGames() // retourne tous les jeux , 5 par page
     return ["games" => $games, "pag" => $pag];
 }
 
-function game($id) //Page d'un jeu avec ses commentaires
+function game() //Page d'un jeu avec ses commentaires
 {
-    $postManager = new PostManager();
-    $game = $postManager->getGame($id);
-    $commentManager = new CommentManager();
-    $comments = $commentManager->comments($id);
-    $commentManager = new CommentManager();
-    $result = $commentManager->rate($id);
-    require('view/frontend/gameView.php');
+    if (!isset($_GET['id']) or !is_numeric($_GET['id'])) :
+        home();
+    else :
+        $id = strip_tags($_GET['id']);
+        $postManager = new PostManager();
+        $game = $postManager->getGame($id);
+        $commentManager = new CommentManager();
+        $comments = $commentManager->comments($id);
+        $commentManager = new CommentManager();
+        $result = $commentManager->rate($id);
+        require('view/frontend/gameView.php');
+
+    endif;
 }
 
-function getGame($id) //renvoie données d'un jeu
+function getGame() //renvoie données d'un jeu
 {
+
+    $id = $_GET['id'];
     $postManager = new PostManager();
     $game = $postManager->getGame($id);
     return $game;
 }
-function categorieGames($categorie) //Pages des differentes categories
+function categorieGames() //Pages des differentes categories
 {
+    $categorie = $_GET['categorie'];
     $postManager = new PostManager();
     $pag = $postManager->pagination($categorie);
     $startPage = $pag['startPage'];
@@ -89,8 +98,9 @@ function addGame($title, $categorie, $image, $synopsis, $content, $positif, $neg
     $postManager = new PostManager();
     $game = $postManager->addGame($title, $categorie, $image, $synopsis, $content, $positif, $negatif);
 }
-function editGame($id)
+function editGame()
 {
+    $id = $_GET['id'];
     $postManager = new PostManager();
     $game = $postManager->getGame($id);
     require('view/frontend/editView.php');

@@ -1,45 +1,25 @@
 <?php
-require('vendor/autoload.php');
-//dd("coucou");
+require 'vendor/autoload.php';
+require_once 'App/controller/frontend.php';
 if (session_status() == PHP_SESSION_NONE) {
   session_start();
   if (!isset($_SESSION['lvl'])) {
     $_SESSION['lvl'] = 'notLoged';
   }
 }
+$requ = 'App\controller\\' . $_GET['action'];
+//$fcts = get_defined_functions();
+//dd($fcts['user']);
+$page = isset($_GET['action']) ?  $requ : 'App\controller\home';
 
-use function App\controller\{
-  home,
-  categorieGames,
-  game,
-  getGame,
-  addGameInterface,
-  admin,
-  addGame,
-  editgame,
-  edit,
-  gameToSuppr,
-  supprGame,
-  registerPage,
-  register,
-  existUser,
-  existMail,
-  loginPage,
-  connect,
-  addCom,
-  verifCom,
-  signaler,
-  retraitSignal,
-  deleteCom,
-  logout,
-  apropos,
-  account,
-  accountUpdate,
-  mentions,
-};
+if (function_exists($page)) {
+  $page();
+} else {
+  echo "La page $page n'existe pas";
+}
 
-require('App/controller/frontend.php');
 
+/*
 if (isset($_GET['action'])) :
   if ($_GET['action'] == 'home') :
     home();
@@ -299,3 +279,4 @@ if (isset($_GET['action'])) :
 else :
   home();
 endif;
+*/
