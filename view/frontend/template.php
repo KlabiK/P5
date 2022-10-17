@@ -23,14 +23,14 @@
         <div>
             <nav class="navbar navbar-expand-lg navbar-light bg-light ">
                 <div class="container-fluid">
-                    <a class="navbar-brand align-items-center" href="index.php"><img src="/public/images/website/Logo.png" alt="logo de la societe" id="logo"> La K-verne du Jeu </a>
+                    <a class="navbar-brand align-items-center" href="index.php?action=home"><img src="/public/images/website/Logo.png" alt="logo de la societe" id="logo"> La K-verne du Jeu </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarToggler">
                         <ul class="navbar-nav  mr-4 mt-2 mt-lg-0">
                             <li class="nav-item active">
-                                <a class="nav-link active" aria-current="page" href="index.php">Accueil</a>
+                                <a class="nav-link active" aria-current="page" href="index.php?action=home">Accueil</a>
                             </li>
                             <li class="dropdown nav-item">
                                 <a href="#" class=" nav-link dropdown-toggle" data-toggle="dropdown">Categories</a>
