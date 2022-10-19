@@ -12,10 +12,13 @@ $requ = 'App\controller\\' . $_GET['action'];
 //dd($fcts['user']);
 $page = isset($_GET['action']) ?  $requ : 'App\controller\home';
 
+
 if (function_exists($page)) {
   $page();
 } else {
-  echo "La page $page n'existe pas";
+  $pageErreur = $_GET['action'];
+  header('Location: index.php?action=home');
+  $_SESSION['erreur'] = "La page $pageErreur est introuvable";
 }
 
 

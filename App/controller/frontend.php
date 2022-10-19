@@ -158,7 +158,7 @@ function edit() //Modifications des données , analyse et envoie en BDD
             $image = '/public/images/' . $arrayImage['name'];
             move_uploaded_file($arrayImage['tmp_name'], $dossier . $arrayImage['name']);
         else :
-            $game = getGame($id);
+            $game = getGame();
             $image =  $game->image;
         endif;
         $synopsis = strip_tags($_POST['synopsis']);
@@ -327,6 +327,13 @@ function accountUpdate() //update du pseudo et de l'img de profil *
         else :
             $user = existUser($_SESSION['user']);
             $img =  $user['image'];
+            $userManager = new UserManager();
+            $update = $userManager->updateUser($id, $pseudo, $img);
+            $_SESSION['user'] = $pseudo;
+            header('Location: index.php?action=account');
+            $_SESSION['message'] = "Votre Pseudo à été modifier avec succès";
+            die;
+
         endif;
         if ($imgType === "image/jpg" or $imgType === "image/JPG" or $imgType === "image/png" or $imgType === "image/PNG" or $imgType === "image/jpeg" or $imgType === "image/JPEG") :
             $userManager = new UserManager();

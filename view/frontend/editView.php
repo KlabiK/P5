@@ -16,7 +16,7 @@
     <?php ob_start(); ?>
     <div class="container col-8 mt-4">
         <h1 class="text-center">Modification du jeu : <?= $game->title ?></h1>
-        <form method="POST" action="index.php?action=edit" enctype="multipart/form-data">
+        <form method="POST" action="index.php?action=edit&id=<?= $game->id ?>" enctype="multipart/form-data">
             <div class="form-group">
                 <h3>Nom du jeu</h3>
                 <label for="title"></label>
@@ -89,7 +89,7 @@
         tinymce.init({
             selector: 'textarea',
             language: 'fr_FR',
-            content_style:  "body { background: #5D4E6D; color: white; font-size: 14pt; font-family: Verdana; }",
+            content_style: "body { background: #5D4E6D; color: white; font-size: 14pt; font-family: Verdana; }",
             height: 400,
         });
     </script>
