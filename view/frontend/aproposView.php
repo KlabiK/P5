@@ -25,6 +25,7 @@ if (isset($_SESSION['user'])) { ?>
 <?php } ?>
 <?php $menu = ob_get_clean(); ?>
 <?php ob_start(); ?>
+
 <div class="container containerGlobal">
     <div class="row">
         <div class="divDesc form-group text-center">
@@ -39,13 +40,16 @@ if (isset($_SESSION['user'])) { ?>
         <div id="searchCity">
             <form>
                 <input type="text" id="ville" placeholder="Ville">
+                <input type="hidden" id="key" value="<?= $_ENV["MAP_API_KEY"] ?>">
                 <input type="button" id="envoyer" value="rechercher" class="btn btn-secondary">
             </form>
         </div>
     </div>
 </div>
-<script src="/public/js/request.js"></script>
-<script src="/public/js/map.js"></script>
+
+<script src=".\public/js/request.js"></script>
+<script src="public/js/map.js"></script>
+
 <?php $content = ob_get_clean(); ?>
 <?php ob_start() ?>
 <ul class="list-inline ">

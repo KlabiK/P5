@@ -30,10 +30,23 @@ class UserManager extends Manager
         $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
         $req->execute([$login, $password, $image, $email]);
     }
-    public function updateUser($id, $pseudo, $img)
+    public function updateUser($id, array $data)
     {
+        $data = array_filter($data, function ($value) {
+            return $value !== "";
+        });
+
+        $fields = array_keys($data);
+        $fields = array_map(function ($field) {
+            return $field . "=?";
+        }, $fields);
+        $fields = implode(",", $fields);
+
+        $values = array_values($data);
+        $values[] = $id;
+
         $bdd = $this->bddConnect();
-        $req = $bdd->prepare("UPDATE users SET login=?,image=? WHERE id=?");
-        $req->execute(array($pseudo, $img, $id));
+        $req = $bdd->prepare("UPDATE users SET $fields WHERE id=?");
+        $req->execute($values);
     }
 }

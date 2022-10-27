@@ -33,7 +33,7 @@ class PostManager extends Manager
 
         $nbGames = $count['nbGames'];
         $perPage = 5;
-        $nbPage = ceil($nbGames / $perPage);
+        $nbPage = ceil($nbGames / $perPage); //arrondi a l'entier superieur
 
         if (isset($_GET['p']) && $_GET['p'] > 0 && $_GET['p'] <= $nbPage) {
             $currentPage = $_GET['p'];

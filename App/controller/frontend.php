@@ -55,7 +55,7 @@ function categorieGames() //Pages des differentes categories *
     $startPage = $pag['startPage'];
     $perPage = $pag['perPage'];
     $games = $postManager->categorieGames($categorie, $perPage, $startPage);
-    switch ($categorie) {
+    switch ($categorie):
         case "initie":
             require('view/frontend/initieView.php');
             break;
@@ -68,7 +68,7 @@ function categorieGames() //Pages des differentes categories *
         case "ambiance":
             require('view/frontend/ambianceView.php');
             break;
-    }
+    endswitch;
     return $pag;
 }
 function apropos()
@@ -124,6 +124,9 @@ function addGame()
         else :
             $_SESSION['erreur'] = "Veuillez selectionner une image valide";
         endif;
+    else :
+        header('Location: index.php?action=addGameInterface');
+        $_SESSION['erreur'] = "Veuillez completer tous les champs";
     endif;
 }
 function editGame()
@@ -158,6 +161,11 @@ function edit() //Modifications des données , analyse et envoie en BDD
             $image = '/public/images/' . $arrayImage['name'];
             move_uploaded_file($arrayImage['tmp_name'], $dossier . $arrayImage['name']);
         else :
+            if ($imgType) :
+                header('Location: index.php?action=admin');
+                $_SESSION['erreur'] = "Le format de l'image est invalide";
+                die;
+            endif;
             $game = getGame();
             $image =  $game->image;
         endif;
@@ -173,8 +181,11 @@ function edit() //Modifications des données , analyse et envoie en BDD
 
         $postManager = new PostManager();
         $game = $postManager->edit($id, $title, $categorie, $image, $synopsis, $content, $positif, $negatif);
-        admin();
+        header('Location: index.php?action=admin');
+        $_SESSION['message'] = "Jeu modifié avec succès";
+
     else :
+        header('Location: index.php?action=admin');
         $_SESSION['erreur'] = "Veuillez completer tous les champs";
     endif;
 }
@@ -215,9 +226,9 @@ function registerPage()
 {
     require('view/frontend/registerPageView.php');
 }
-function register($login, $password, $image, $email)
+function register()
 {
-    if (isset($_POST)) {
+    if (isset($_POST)) :
 
         $login = htmlspecialchars($_POST['login']);
         $email = htmlspecialchars($_POST['email']);
@@ -228,39 +239,39 @@ function register($login, $password, $image, $email)
         $image = '.\public/images/users/' . $arrayImage['name'];
         $dossier = "/kunden/homepages/32/d779462273/htdocs/P5/public/images/users/";
 
-        if (!empty($login) && preg_match('#^[a-zA-Z0-9_]{4,10}$#', $login)) {
-            if (existUser($login) == 0 && existMail($email) == 0) {
-                if (!empty($email) && preg_match('#[a-zA-Z0-9@]#', $email)) {
-                    if (!empty($password) && $password == $passwordRetype) {
-                        if ($arrayType === "image/jpg" or $arrayType === "image/JPG" or $arrayType === "image/png" or $arrayType === "image/PNG" or $arrayType === "image/jpeg" or $arrayType === "image/JPEG") {
+        if (!empty($login) && preg_match('#^[a-zA-Z0-9_]{4,10}$#', $login)) :
+            if (existUser($login) == 0 && existMail($email) == 0) :
+                if (!empty($email) && preg_match('#[a-zA-Z0-9@]#', $email)) :
+                    if (!empty($password) && $password == $passwordRetype) :
+                        if ($arrayType === "image/jpg" or $arrayType === "image/JPG" or $arrayType === "image/png" or $arrayType === "image/PNG" or $arrayType === "image/jpeg" or $arrayType === "image/JPEG") :
                             $userManager = new UserManager();
                             $user = $userManager->userRegister($login, $password, $image, $email);
                             move_uploaded_file($arrayImage['tmp_name'], $dossier . $arrayImage['name']);
                             header('Location: index.php?action=loginPage');
                             $_SESSION['message'] = "Votre compte à bien été créé";
-                        } else {
+                        else :
                             header('Location:index.php?action=registerPage');
                             $_SESSION['erreur'] = "Le format de l'image est invalide";
-                        }
-                    } else {
+                        endif;
+                    else :
                         header('Location:index.php?action=registerPage');
                         $_SESSION['erreur'] = "Les mots de passe ne sont pas identique, Veuillez les saisir à nouveau";
-                    }
-                } else {
+                    endif;
+                else :
                     header('Location: index.php?action=registerPage');
                     $_SESSION['erreur'] = "Votre adresse mail est incorrecte";
-                }
-            } else {
+                endif;
+            else :
                 header('Location:index.php?action=registerPage');
                 $_SESSION['erreur'] = "Cet Identifiant n'est pas disponible";
-            }
-        } else {
+            endif;
+        else :
             header('Location: index.php?action=registerPage');
             $_SESSION['erreur'] = "L'identifiant saisi n'est pas valide";
-        }
-    } else {
+        endif;
+    else :
         header('Location: index.php?action=registerPage');
-    }
+    endif;
 }
 function existUser($login)
 {
@@ -286,27 +297,27 @@ function login()
         $userManager = new UserManager();
         $user = $userManager->user($login);
     endif;
-    if (isset($user)) {
+    if (isset($user)) :
         $passwordVerified = password_verify($_POST['password'], $user['password']);
-        if ($passwordVerified == true) {
+        if ($passwordVerified == true) :
             $_SESSION['user'] = $user['login'];
             $_SESSION['img'] = $user['image'];
             $_SESSION['id'] = $user['id'];
             $_SESSION['lvl'] = $user['type'];
 
-            if ($user['type'] == '1') {
+            if ($user['type'] == '1') :
                 header('Location: index.php?action=admin');
-            } else {
+            else :
                 home();
-            }
-        } else {
+            endif;
+        else :
             header('Location: index.php?action=loginPage');
             $_SESSION['erreur'] = "Identifiants incorrects";
-        }
-    } else {
+        endif;
+    else :
         header('Location: index.php?action=loginPage');
         $_SESSION['erreur'] = "Identifiants incorrects";
-    }
+    endif;
 }
 function account()
 {
@@ -325,10 +336,11 @@ function accountUpdate() //update du pseudo et de l'img de profil *
         if (isset($imgToTest['name']) && is_string($imgToTest['name']) && $imgToTest['name'] != "") :
             $img = '/public/images/users/' . $imgToTest['name'];
         else :
-            $user = existUser($_SESSION['user']);
-            $img =  $user['image'];
+
             $userManager = new UserManager();
-            $update = $userManager->updateUser($id, $pseudo, $img);
+            $update = $userManager->updateUser($id, [
+                "login" => $pseudo,
+            ]);
             $_SESSION['user'] = $pseudo;
             header('Location: index.php?action=account');
             $_SESSION['message'] = "Votre Pseudo à été modifier avec succès";
@@ -337,7 +349,10 @@ function accountUpdate() //update du pseudo et de l'img de profil *
         endif;
         if ($imgType === "image/jpg" or $imgType === "image/JPG" or $imgType === "image/png" or $imgType === "image/PNG" or $imgType === "image/jpeg" or $imgType === "image/JPEG") :
             $userManager = new UserManager();
-            $update = $userManager->updateUser($id, $pseudo, $img);
+            $update = $userManager->updateUser($id, [
+                "login" => $pseudo,
+                "image" => $image
+            ]);
             $_SESSION['user'] = $pseudo;
             $_SESSION['img'] = $img;
             move_uploaded_file($imgToTest['tmp_name'], $dossier . $imgToTest['name']);
@@ -364,7 +379,7 @@ function addCom() // ajout de l'avis + note
     $userId = $_SESSION['id'];
     $articleId = $_GET['id'];
     verifCom($userId, $articleId);
-    if (isset($_POST['comment']) && !empty($_POST['comment']) && isset($_POST['userNote']) && !empty($_POST['userNote'])) :
+    if (isset($_POST['comment']) && !empty($_POST['comment'])) :
         $comment = strip_tags($_POST['comment']);
         $comment = stripslashes(nl2br($_POST['comment']));
         $comment = htmlentities($_POST['comment']);

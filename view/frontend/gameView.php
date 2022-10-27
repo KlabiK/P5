@@ -37,13 +37,7 @@ if (isset($_SESSION['user'])) { ?>
             <h1 class="my-4"><?= $game->title ?></h1>
             <h3 class="my-4">Categorie : <?= $game->categorie ?></h3>
             <?php if ($result > 0) { ?> <h3 class="my-4">Note : <?= $result['result'] ?>/5 (sur <?= $result['count'] ?> avis) </h3> <?php } ?>
-
             <hr>
-            <div class="resumeGame">
-                <h3>Résumé du jeu :</h3>
-                <p><?= $game->content ?></p>
-
-            </div>
         </div>
     </div>
     <div class="row col-12 notes" id="notes">

@@ -34,7 +34,7 @@ if (isset($_SESSION['user'])) { ?>
 <?php $menu = ob_get_clean(); ?>
 <?php ob_start(); ?>
 <div class="container">
-    <div id="carousel1">
+    <div id="carousel1" class="your-class">
         <div class="item row col-12">
             <div class="item_img col-7">
                 <img src="/public/images/JDS.webp" alt="image d'une table de jeux de societe">
@@ -76,6 +76,7 @@ if (isset($_SESSION['user'])) { ?>
         </div>
     </div>
 </div>
+
 <div class="container">
     <div class="row">
         <div class=" form-group text-center">
@@ -113,7 +114,10 @@ if (isset($_SESSION['user'])) { ?>
     <li class="list-inline-item font-weight-bold nav-item"><a class="nav-link" href="index.php?action=Apropos">À propos</a></li>
     <li class="list-inline-item font-weight-bold nav-item"><a class="nav-link" href="index.php?action=mentions">Mentions légales</a></li>
 </ul>
-<script src="/public/js/carousel.js" async></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script src="/public/js/slick.js"></script>
 <?php $footer = ob_get_clean(); ?>
 
 <?php require('template.php'); ?>

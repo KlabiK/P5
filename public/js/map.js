@@ -1,4 +1,5 @@
 var city =  document.getElementById('ville').value;
+var key = document.getElementById('key').value;
 var map;
 if(city == "") {
     city = "Paris"
@@ -6,8 +7,8 @@ if(city == "") {
     city = document.getElementById('ville').value;
 }
 
-var cultura ="http://open.mapquestapi.com/nominatim/v1/search.php?key=aGFxdPom9KsYRhAC12YiprRNn0Gw42iA&format=json&q="+city+"+cultura+[librairie]&addressdetails=0&limit=5&countrycodes=fr&viewbox=-1.99%2C52.02%2C0.78%2C50.94";
-var fnac ="http://open.mapquestapi.com/nominatim/v1/search.php?key=aGFxdPom9KsYRhAC12YiprRNn0Gw42iA&format=json&q="+city+"+fnac+[librairie]&addressdetails=0&limit=5&countrycodes=fr&viewbox=-1.99%2C52.02%2C0.78%2C50.94";
+var cultura ="http://open.mapquestapi.com/nominatim/v1/search.php?key="+key+"&format=json&q="+city+"+cultura+[librairie]&addressdetails=0&limit=5&countrycodes=fr&viewbox=-1.99%2C52.02%2C0.78%2C50.94";
+var fnac ="http://open.mapquestapi.com/nominatim/v1/search.php?key="+key+"&format=json&q="+city+"+fnac+[librairie]&addressdetails=0&limit=5&countrycodes=fr&viewbox=-1.99%2C52.02%2C0.78%2C50.94";
 
 
 class Map{
@@ -17,7 +18,7 @@ class Map{
     }
     initMap() {//initialisation de la map
       
-            var cityLoc ="http://open.mapquestapi.com/nominatim/v1/search.php?key=aGFxdPom9KsYRhAC12YiprRNn0Gw42iA&format=json&q=Paris+&addressdetails=0&limit=1&countrycodes=fr&viewbox=-1.99%2C52.02%2C0.78%2C50.94";
+            var cityLoc ="http://open.mapquestapi.com/nominatim/v1/search.php?key="+key+"&format=json&q=Paris+&addressdetails=0&limit=1&countrycodes=fr&viewbox=-1.99%2C52.02%2C0.78%2C50.94";
             fetch(cityLoc)
             .then(res => res.json())
             .then((resJson => {
@@ -73,9 +74,9 @@ class Map{
             }
             if(map){
                  city = document.getElementById('ville').value;
-                 cultura ="http://open.mapquestapi.com/nominatim/v1/search.php?key=aGFxdPom9KsYRhAC12YiprRNn0Gw42iA&format=json&q="+city+"+cultura+[librairie]&addressdetails=0&limit=5&countrycodes=fr&viewbox=-1.99%2C52.02%2C0.78%2C50.94";
-                 fnac ="http://open.mapquestapi.com/nominatim/v1/search.php?key=aGFxdPom9KsYRhAC12YiprRNn0Gw42iA&format=json&q="+city+"+fnac+[librairie]&addressdetails=0&limit=5&countrycodes=fr&viewbox=-1.99%2C52.02%2C0.78%2C50.94";
-                 var cityLoc ="http://open.mapquestapi.com/nominatim/v1/search.php?key=aGFxdPom9KsYRhAC12YiprRNn0Gw42iA&format=json&q="+city+"+&addressdetails=0&limit=10&countrycodes=fr&viewbox=-1.99%2C52.02%2C0.78%2C50.94";    
+                 cultura ="http://open.mapquestapi.com/nominatim/v1/search.php?key="+key+"&format=json&q="+city+"+cultura+[librairie]&addressdetails=0&limit=5&countrycodes=fr&viewbox=-1.99%2C52.02%2C0.78%2C50.94";
+                 fnac ="http://open.mapquestapi.com/nominatim/v1/search.php?key="+key+"&format=json&q="+city+"+fnac+[librairie]&addressdetails=0&limit=5&countrycodes=fr&viewbox=-1.99%2C52.02%2C0.78%2C50.94";
+                 var cityLoc ="http://open.mapquestapi.com/nominatim/v1/search.php?key="+key+"&format=json&q="+city+"+&addressdetails=0&limit=10&countrycodes=fr&viewbox=-1.99%2C52.02%2C0.78%2C50.94";    
                   fetch(cityLoc)
                  .then(res => res.json())
                  .then((resJson => {
